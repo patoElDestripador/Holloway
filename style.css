@@ -1,0 +1,130 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #333;
+    font-family: Arial, sans-serif;
+}
+
+.card {
+    background-color: rgba(217, 217, 217, 0.18);
+    backdrop-filter: blur(8px);
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 90%;
+    max-width: 350px;
+    height: 50vh;
+    max-height: 300px;
+    margin: auto;
+}
+
+.terminal-header {
+    background-color: #202425;
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+}
+
+.terminal-title {
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.terminal-icon {
+    color: #006adc;
+}
+
+.terminal-body {
+    background-color: #202425;
+    color: #ffffff;
+    padding: 15px;
+    font-family: "Courier New", Courier, monospace;
+}
+
+.command-line {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.prompt {
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.input-wrapper {
+    position: relative;
+    flex-grow: 1;
+}
+
+.input-field {
+    background-color: transparent;
+    border: none;
+    color: #006adc;
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    padding-right: 10px;
+}
+
+.input-field::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.input-wrapper::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 15px;
+    background-color: #ffffff;
+    animation: blink 1s step-end infinite;
+}
+
+.error-message, .lock-message {
+    color: #ff4d4d;
+    font-size: 12px;
+    margin-top: 5px;
+    display: none;
+}
+
+.input-field.error {
+    border-bottom: 1px solid #ff4d4d;
+}
+
+.lock-message {
+    display: none;
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 80%;
+        max-width: 350px;
+        height: auto;
+        max-height: 300px;
+    }
+}

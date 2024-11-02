@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mensaje Final</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 200vh;
+        margin: 0;
+        font-family: "Cursive", serif;
+        background-color: #e2d3b3;
+        padding: 20px;
+        margin-top: -250px;
+      }
+
+      /* Contenedor de la carta */
+      .letter-container {
+        background-color: #f0e4c3;
+        padding: 30px;
+        width: 100%;
+        max-width: 600px;
+        border: 2px solid #c2b280;
+        border-radius: 5px;
+        box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+        font-family: "Courier New", monospace;
+        color: #4a3c2c;
+        line-height: 1.6;
+        font-size: 1.1em;
+        text-align: justify;
+        background-image: url("https://www.example.com/path-to-paper-texture.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: auto; /* Permite desplazamiento si es necesario */
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 1.5em;
+        margin-bottom: 20px;
+        font-family: "Cursive", serif;
+        color: #4a3c2c;
+      }
+
+      p {
+        margin-bottom: 15px;
+        text-indent: 40px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="letter-container">
+      <h1>Este no es un adios, si no un hasta pronto</h1>
+      <p>
+        Si estás leyendo esto, es porque he llegado al final de mi camino y la verdad ha salido a la luz. Quiero que sepas lo que realmente ha sucedido. Mucho antes de que Halloween Enterprise se
+        convirtiera en un imperio respetable, me uní a una organización secreta conocida como <strong>El Círculo del Ocaso</strong>. En mi ambición, acepté sus pactos oscuros, creyendo que el poder y
+        la riqueza eran suficientes. Pero a lo largo de los años, me di cuenta del precio que había pagado, y decidí liberarme de esos lazos.
+      </p>
+      <p>
+        Sin embargo, mi búsqueda de verdad y redención despertó la ira de aquellos que aún operan en las sombras. He recopilado pruebas que podrían destruir a El Círculo, y algunos de ustedes saben
+        que están en peligro. Lamento no poder ver la resolución de este asunto; la realidad es que sé que El Círculo fue el verdadero autor de mi asesinato. Me duele decir esto, pero hace poco
+        escuché a Valentina hablar de cómo sería mi asesinato para así heredar la compañía. Mi investigación y pruebas para desenmascarar al Círculo están aquí.
+      </p>
+    </div>
+    <script>
+      window.onload = function () {
+        if (sessionStorage.getItem("authenticated") !== "true") {
+          location.href = "index.html";
+        }
+      };
+    </script>
+  </body>
+</html>
