@@ -1,0 +1,10 @@
+app: # @init @OnlyText configuración de la aplicación
+  name: "prueba aplicacion publica" # @Required Nombre de la aplicación
+  version: "1.0.0" # @Required Versión de despliegue
+  database: # @Section Configuración de la base de datos
+    host: "db.example.com" # @Required Host de la base de datos
+    port: 5432 # @Required Puerto de la base de datos
+    ssl: true # @nullable Modo de conexión segura
+    credentials: # @SubSection Credenciales de acceso a la base de datos
+      user: "admin" # @Required Usuario de la base de datos
+      password: "secret123" # @Required Contraseña de la base de datos
