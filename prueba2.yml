@@ -1,10 +1,69 @@
-app: # @init @OnlyText configuración de la aplicación
-  name: "prueba aplicacion publica" # @Required Nombre de la aplicación
-  version: "1.0.0" # @Required Versión de despliegue
+app_config: # @init Configuración principal de la aplicación web
+  metadata: # @Section Información básica de la aplicación
+    app_name: "E-Commerce Platform" # @Required nombre de la aplicación
+    version: "2.1.5" # @Required versión actual
+    description: "Sistema de comercio electrónico completo" # @Optional descripción del sistema
+    port: 8080 # @Required puerto donde corre la aplicación
+    debug_mode: false # @Nullable modo de depuración
+    max_connections: 1000 # @Optional máximo de conexiones simultáneas
   database: # @Section Configuración de la base de datos
-    host: "db.example.com" # @Required Host de la base de datos
-    port: 5432 # @Required Puerto de la base de datos
-    ssl: true # @nullable Modo de conexión segura
-    credentials: # @SubSection Credenciales de acceso a la base de datos
-      user: "admin" # @Required Usuario de la base de datos
-      password: "secret123" # @Required Contraseña de la base de datos
+    engine: "PostgreSQL" # @Required motor de base de datos
+    host: "localhost" # @Required dirección del servidor
+    port: 5432 # puerto de conexión
+    name: "ecommerce_db" # @Required nombre de la base de datos
+    pool_size: 20 # @Optional tamaño del pool de conexiones
+    ssl_enabled: true # @Nullable habilitación de SSL
+    connection_string: "postgresql://user:password@localhost:5432/ecommerce_db" # @Required cadena de conexión completa
+    auth: # @SubSection Autenticación de la base de datos
+      username: "db_admin" # @Required usuario administrador
+      password: "secure_password_2024" # @Required contraseña segura
+      encryption_key: "AES256_SECRET_KEY_2024" # @Required clave de encriptación
+      session_timeout: "12h" # @Optional tiempo de expiración de sesión
+      backup_config: # @SubSection Configuración de respaldos
+        frequency: "daily" # @Required frecuencia de respaldo
+        retention_days: 30 # @nullable días de retención
+        storage_path: "/var/backups/db" # @Required ruta de almacenamiento
+  services: # @Section Servicios externos integrados
+    payment_gateway: # @SubSection Pasarela de pagos
+      provider: "Stripe" # @Required proveedor de pagos
+      api_endpoint: "https://api.stripe.com/v1" # @Required endpoint de la API
+      webhook_secret: "whsec_stripe_webhook_secret" # @Required secreto del webhook
+      supported_currencies: # @SubSection Monedas soportadas
+        - USD # @OnlyText Dólar estadounidense
+        - EUR # @OnlyText Euro
+        - COP # @OnlyText Peso colombiano
+        - MXN # @OnlyText Peso mexicano
+    email_service: # @SubSection Servicio de correo electrónico
+      smtp_server: "smtp.gmail.com" # @Required servidor SMTP
+      smtp_port: 587 # puerto SMTP
+      use_tls: true # @Nullable uso de TLS
+      sender_email: "noreply@ecommerce.com" # @Required email remitente
+      daily_limit: 5000 # @Optional límite diario de envíos
+  security: # @Section Configuración de seguridad
+    jwt_secret: "super_secret_jwt_key_2024" # @Required clave secreta para JWT
+    token_expiration: "1h" # @Required tiempo de expiración del token
+    refresh_token_expiration: "7d" # @Optional tiempo de expiración del refresh token
+    bcrypt_rounds: 12 # @nullable rondas de encriptación bcrypt
+    rate_limiting: # @SubSection Limitación de velocidad
+      max_requests: 100 # @Required máximo de requests por ventana
+      window_size: "15m" # @Required tamaño de la ventana de tiempo
+      block_duration: "1h" # @Optional duración del bloqueo
+    cors_config: # @SubSection Configuración CORS
+      allowed_origins: # @SubSection Orígenes permitidos
+        - https://www.mitienda.com # @OnlyText Dominio principal
+        - https://admin.mitienda.com # @OnlyText Panel administrativo
+        - https://api.mitienda.com # @OnlyText API endpoint
+      allowed_methods: # @SubSection Métodos HTTP permitidos
+        - GET # @OnlyText Método GET
+        - POST # @OnlyText Método POST
+        - PUT # @OnlyText Método PUT
+        - DELETE # @OnlyText Método DELETE
+  features: # @Section Características habilitadas
+    inventory_tracking: true # @Required seguimiento de inventario
+    wishlist_enabled: true # @Optional lista de deseos habilitada
+    reviews_system: true # @Nullable sistema de reseñas
+    recommendation_engine: false # motor de recomendaciones
+    analytics_tracking: true # @Required seguimiento de analíticas
+    multi_language: true # @Optional soporte multiidioma
+    cache_enabled: true # @Nullable habilitación de caché
+    search_boost_formula: "IF(LOWER(category)='electronics',score*1.5,IF(LOWER(category)='books',score*1.2,score))" # @Required fórmula de boost para búsqueda
